@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import { Flex, Grid, Link, Text } from "@radix-ui/themes";
+import notifyAviUtl2Image from "@/assets/images/service/aviutl-release-notify/notify-aviutl2.png";
+import notifySDKImage from "@/assets/images/service/aviutl-release-notify/notify-sdk.png";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title="AviUtl Release Notify | サービス紹介">
+		<div class="max-w-5xl space-y-8 py-8">
+				<section>
+						<h1 class="text-4xl leading-10 font-medium tracking-tight text-(--gray-12)">
+								AviUtl Release Notify
+						</h1>
+				
+						<div class="mt-6 leading-relaxed text-(--gray-11)">
+								AviUtl2・AviUtl2 Plugin SDK のリリースを通知する Discord Bot です。<br/>
+								3時間毎にリリース情報を監視します。また、手動で更新をチェックすることも可能です。<br/>
+								新しいリリースがあれば、Discord の指定したチャンネルに通知します。
+						</div>
+        </section>
+
+        <Flex direction="column" align="center" justify="center" gap="1">
+            <Grid columns="2" gap="3">
+                <Image
+                        src={notifyAviUtl2Image}
+                        alt="AviUtl2 のリリースを通知する様子"
+                        title="AviUtl2 のリリースを通知する様子"
+                        class="w-full h-auto object-contain"
+                />
+                <Image
+                        src={notifySDKImage}
+                        alt="AviUtl2 Plugin SDK のリリースを通知する様子"
+                        title="AviUtl2 Plugin SDK のリリースを通知する様子"
+                        class="w-full h-auto object-contain"
+                />
+            </Grid>
+		        
+		        <Text as="span" size="3" color="gray">
+				        リリースを通知する様子
+		        </Text>
+        </Flex>
+				
+				<section>
+						<h2 class="mt-4 text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">1. 導入</h2>
+						
+						<div class="mt-6 leading-relaxed text-(--gray-11)">
+								<Link href="https://discord.com/oauth2/authorize?client_id=1416628772710645851" target="_blank" rel="noopener noreferrer">
+										Discord に追加する
+								</Link>
+						</div>
+				</section>
+				
+				<section>
+						<h2 class="mt-4 text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">2. 使用方法</h2>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12)">1. 通知の登録</h3>
+								
+								<div class="mt-2 leading-relaxed text-(--gray-11)">
+										通知チャンネルを登録するには、<code>/register</code> コマンドを使用します。<br/>
+										コマンドを実行するユーザーが「サーバーを管理」権限を有している必要があります。<br/>
+										例: <code>/register 対象チャンネル:#aviutl2-releases</code>
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12)">2. 通知の解除</h3>
+
+								<div class="mt-2 leading-relaxed text-(--gray-11)">
+										通知チャンネルを解除するには、<code>/unregister</code> コマンドを使用します。<br/>
+										コマンドを実行するユーザーが「サーバーを管理」権限を有している必要があります。<br/>
+										例: <code>/unregister 対象チャンネル:#aviutl2-releases</code>
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12)">3. 手動で更新をチェック</h3>
+
+								<div class="mt-2 leading-relaxed text-(--gray-11)">
+										手動でリリース情報の更新をチェックするには、<code>/update</code> コマンドを使用します。<br/>
+										例: <code>/update</code>
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12)">4. 通知内容</h3>
+
+								<div class="mt-2 leading-relaxed text-(--gray-11)">
+										通知される内容は、リリースのタイトル、リリースノートの概要、リリース日時、ダウンロードリンクなどです。
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12)">5. リリース情報の表示</h3>
+
+								<div class="mt-2 leading-relaxed text-(--gray-11)">
+										リリース情報を表示するには、<code>/getlatestinfo</code> コマンドを使用します。<br/>
+										例: <code>/getlatestinfo type:AviUtl2</code> , <code>/getlatestinfo type:SDK</code>
+								</div>
+						</section>
+				</section>
+		</div>
+</MainLayout>

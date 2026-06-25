@@ -1,0 +1,126 @@
+---
+import { CheckIcon, ClipboardCopyIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { Code, Flex, IconButton } from "@radix-ui/themes";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title="お問い合わせ">
+    <div class="max-w-5xl space-y-8 py-8">
+        <section>
+            <h1 class="text-4xl leading-10 font-medium tracking-tight text-(--gray-12)">
+                お問い合わせ
+            </h1>
+
+            <p class="mt-6 leading-relaxed text-(--gray-11)">
+                お問い合わせは以下のメールアドレスまでお願いいたします。
+            </p>
+
+            <a
+                    href="mailto:contact@yu-yu0202.com"
+                    class="mt-2 inline-block font-medium text-(--gray-12) hover:underline"
+            >
+                contact@yu-yu0202.com
+            </a>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">
+                返信について
+            </h2>
+
+            <p class="mt-6 leading-relaxed text-(--gray-11)">
+                通常、数日以内に返信いたします。<br />
+                法令・プライバシーに関するお問い合わせなど、
+                早急な対応が必要な場合は件名に「【至急】」とご記載ください。
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">
+                OpenPGP
+            </h2>
+
+            <p class="mt-6 leading-relaxed text-(--gray-11)">
+                メール署名の確認には、以下のフィンガープリントをご利用ください。
+                なお、keys.openpgp.org にも <a href="https://keys.openpgp.org/search?q=794B+DFAF+6950+B411+301C+52DE+EFBE+7214+D295+1236" class="hover:underline text-(--gray-12) font-medium">公開</a> しています。
+            </p>
+            
+            <Flex align="center" justify="center" gap="1">
+                <Code variant="ghost" className="mt-4" id="fingerprint">
+                    794B DFAF 6950 B411 301C 52DE EFBE 7214 D295 1236
+                </Code>
+                <IconButton size="1" title="コピー" aria-label="フィンガープリントをコピー" color="gray" variant="ghost" id="button-copy-fingerprint">
+                    <span class="relative inline-flex items-center justify-center size-4">
+                        <ClipboardCopyIcon id="icon-copy-fingerprint" className="copy-button active" />
+                        <CheckIcon id="icon-copied-fingerprint" className="copy-button" />
+                        <Cross2Icon id="icon-error-fingerprint" className="copy-button" />
+                    </span>
+                </IconButton>
+            </Flex>
+            
+            <p class="mt-4 leading-relaxed text-(--gray-11)">
+                この鍵で署名したメールを送信しています。
+                必要に応じて署名の確認にご利用ください。
+            </p>
+        </section>
+    </div>
+    
+    <script is:inline>
+        (() => {
+            const btn = document.getElementById("button-copy-fingerprint");
+            const iconCopy = document.getElementById("icon-copy-fingerprint");
+            const iconCopied = document.getElementById("icon-copied-fingerprint");
+            const iconError = document.getElementById("icon-error-fingerprint");
+            const fingerprint = document.getElementById("fingerprint").innerText;
+            
+            btn?.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(fingerprint);
+                    iconCopied?.classList.add("active");
+                } catch (err) {
+                    console.error("Failed to copy: ", err);
+                    iconError?.classList.add("active");
+                } finally {
+                    iconCopy?.classList.remove("active");
+                    setTimeout(() => {
+                        iconCopy?.classList.add("active");
+                        iconCopied?.classList.remove("active");
+                        iconError?.classList.remove("active");
+                    }, 2000);
+                }
+            });
+        })();
+    </script>
+    
+    <style>
+        .copy-button {
+            position: absolute;
+            inset: 0;
+            
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .copy-button.active {
+            opacity: 1;
+            animation: copy-pop 200ms ease-in-out forwards;
+        }
+        
+        @keyframes copy-pop {
+            0% {
+                opacity: 0;
+                transform: scale(0.75);
+            }
+            
+            80% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+            
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</MainLayout>

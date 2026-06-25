@@ -1,0 +1,27 @@
+---
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title="ページが見つかりません">
+    <div class="max-w-5xl py-8 flex flex-col items-center sm:items-start text-center sm:text-left mx-auto">
+        <section>
+            <h1 class="text-4xl font-medium tracking-tight text-(--gray-12)">
+                HTTP ERROR 404 - ページが見つかりません
+            </h1>
+            
+            <div class="mt-6 leading-relaxed text-(--gray-11)">
+                お探しのページは見つかりませんでした。<br/>
+                URLが間違っているか、ページが削除された可能性があります。<br/>
+                アドレスが正しいかもう一度ご確認いただくか、以下のボタンよりトップページへお戻りください。<br/>
+                <br/>
+                <a
+                  href="/"
+                  class="inline-flex items-center gap-1 text-(--gray-12) font-medium hover:underline"
+                >
+                    トップページへ戻る <ArrowRightIcon />
+                </a>
+            </div>
+        </section>
+    </div>
+</MainLayout>

@@ -1,0 +1,26 @@
+---
+import { getPostById } from "@database/utils/posts.ts";
+import { PostEditForm } from "@/components/PostEditForm";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export const prerender = false;
+
+const { id } = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/admin/posts");
+}
+
+const [post] = await getPostById(id, false);
+
+if (!post) {
+  return Astro.redirect("/admin/posts");
+}
+---
+
+<BaseLayout title={`記事を編集: ${post.title}`}>
+  <main class="flex flex-col h-screen">
+    <PostEditForm post={post} client:visible />
+  </main>
+</BaseLayout>
+

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@radix-ui/themes/styles.css";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans: var(--font-gen-interface-jp);
+}
+
+:root,
+.radix-themes {
+	--default-font-family: var(--font-sans);
+}

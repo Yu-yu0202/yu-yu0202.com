@@ -1,0 +1,57 @@
+---
+import { getPostBySlug } from "@database/utils/posts.ts";
+import { Container, Flex, Heading, Text } from "@radix-ui/themes";
+import MainLayout from "@/layouts/MainLayout.astro"
+import { intoResponse } from "@/utils/res.ts";
+
+export const prerender = false;
+
+// おそらく Astro Language Server のバグで、トップレベルの return で関数を使うと Unused 判定を食らうので、ts-expect-error で一時的に回避
+//@ts-expect-error
+const notFound = () => {
+  Astro.response.status = 404;
+  return intoResponse(Astro.response);
+}
+
+const { slug } = Astro.params;
+
+if (!slug) return notFound();
+
+const [post] = await getPostBySlug(slug, true);
+if (!post) return notFound();
+
+const lastModified = new Date(post.updatedAt).toUTCString();
+const ifModifiedSince = Astro.request.headers.get('if-modified-since');
+
+if (ifModifiedSince && new Date(ifModifiedSince) >= new Date(post.updatedAt)) {
+  Astro.response.status = 304;
+  Astro.response.headers.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  return intoResponse(Astro.response);
+}
+
+Astro.response.headers.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+Astro.response.headers.set('Cloudflare-CDN-Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
+Astro.response.headers.set('Last-Modified', lastModified);
+---
+
+<MainLayout title={post.title}>
+  <Container size="2" p="6">
+    <Flex direction="column" gap="4">
+      <Text size="2" color="gray">
+        {new Date(post.createdAt).toLocaleDateString('ja-JP', {dateStyle: "long"})}
+      </Text>
+
+      <Heading size="8">
+        {post.title}
+      </Heading>
+
+      <div class="h-px w-full bg-(--gray-5) my-2"></div>
+      
+      <article
+        class="prose text-[17px] prose-slate dark:prose-invert max-w-none
+         prose-code:before:content-none prose-code:after:content-none"
+        set:html={post.renderedBody}
+      />
+    </Flex>
+  </Container>
+</MainLayout>

@@ -1,0 +1,27 @@
+{
+	"version": "7",
+	"dialect": "postgresql",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "7",
+			"when": 1778920671247,
+			"tag": "0000_magenta_guardian",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "7",
+			"when": 1779019664104,
+			"tag": "0001_strange_felicia_hardy",
+			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "7",
+			"when": 1780118682583,
+			"tag": "0002_mean_moon_knight",
+			"breakpoints": true
+		}
+	]
+}

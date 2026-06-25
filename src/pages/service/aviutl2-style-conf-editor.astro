@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import { Flex, Grid, Link, Text } from "@radix-ui/themes";
+import screenshotDark from "@/assets/images/service/aviutl2-style-conf-editor/screenshot-dark.png";
+import screenshotLight from "@/assets/images/service/aviutl2-style-conf-editor/screenshot-light.png";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+<MainLayout title="AviUtl2 Style Conf Editor | サービス紹介">
+		<div class="max-w-5xl space-y-8 py-8">
+				<section>
+						<h1 class="text-4xl leading-10 font-medium tracking-tight text-(--gray-12)">
+								AviUtl2 Style Conf Editor
+						</h1>
+				
+						<div class="mt-6 leading-relaxed text-(--gray-11)">
+								AviUtl2 のスタイル設定ファイル(style.conf)を編集するためのツールです。<br/>
+								カラーピッカーなどを用いて、スタイル設定ファイルを簡単かつ視覚的に編集できます。<br/>
+						</div>
+				</section>
+				
+				<Flex direction="column" align="center" justify="center" gap="4">
+						<Grid columns="2" gap="3">
+								<Image
+										src={screenshotDark}
+										alt="AviUtl2 Style Conf Editor のスクリーンショット 1枚目"
+										title="AviUtl2 Style Conf Editor のスクリーンショット"
+										class="w-full h-auto object-contain"
+								/>
+								<Image
+										src={screenshotLight}
+										alt="AviUtl2 Style Conf Editor のスクリーンショット 2枚目"
+										title="AviUtl2 Style Conf Editor のスクリーンショット"
+										class="w-full h-auto object-contain"
+								/>
+						</Grid>
+						
+						<Text as="span" size="3" color="gray">
+								AviUtl2 Style Conf Editor のスクリーンショット
+						</Text>
+				</Flex>
+				
+				<section>
+						<h2 class="mt-4 text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">0. 動作環境・要件</h2>
+						
+						<div class="mt-4 leading-relaxed text-(--gray-11)">
+								<ul class="list-disc list-inside text-(--gray-11) ml-1">
+										<li>
+												64bit Windows 10 以降 (動作確認済み: Windows 11)
+										</li>
+										
+										<li>
+												AviUtl ExEdit2 がインストール済みであること (古いバージョンの互換性に関しては保証できません。最新版を推奨します)
+										</li>
+								</ul>
+						</div>
+				</section>
+				
+				<section>
+						<h2 class="mt-4 text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">1. 導入方法</h2>
+						
+						<div class="mt-4 leading-relaxed text-(--gray-11)">
+								<Link href="https://github.com/Yu-yu0202/AviUtl2-style-config-editor/releases/latest" target="_blank">GitHub</Link>
+								から、最新版の <code>aviutl2-style-config-editor.exe</code> をダウンロードしてください。<br/>
+								
+								ダウンロードしたファイルを実行すると、AviUtl2 Style Conf Editor が起動します。<br/>
+								（Windows Defender SmartScreen による警告が表示される場合がありますが、「詳細情報」をクリックして「実行」を選択することで起動できます。<br/>
+								当ソフトはオープンソースで公開されており、不安がある場合はコードを読むことも可能です。）
+						</div>
+				</section>
+				
+				<section>
+						<h2 class="mt-4 text-3xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">2. 使用方法</h2>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">1. style.conf を開く</h3>
+
+								<div class="mt-4 leading-relaxed text-(--gray-11)">
+                    style.conf を開いて編集するには、上部から「ファイルを開く」を選択し、style.conf ファイルを指定してください。<br/>
+                    通常、このファイルは AviUtl2 のインストールディレクトリ、または %APPDATA%\aviutl2\ に存在します。
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">2. バックアップの作成</h3>
+								
+								<div class="mt-4 leading-relaxed text-(--gray-11)">
+										style.conf を編集する前に、バックアップを行うことを強く推奨します。<br/>
+										編集後に不具合が発生した場合、バックアップから復元することで元の状態に戻すことができます。<br/>
+										バックアップは、上部から「バックアップを作成」を選択することで行えます。
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">3. 編集方法</h3>
+								
+								<div class="mt-4 leading-relaxed text-(--gray-11)">
+										画面に表示されている各項目を編集することで、style.conf の内容を変更できます。<br/>
+										色項目は、カラーピッカーを使用して視覚的に編集することができます。
+								</div>
+						</section>
+						
+						<section>
+								<h3 class="mt-4 text-2xl font-medium text-(--gray-12) border-b border-(--gray-a4) pb-2">4. 保存方法</h3>
+								
+								<div class="mt-4 leading-relaxed text-(--gray-11)">
+										編集が完了したら、上部から「設定を保存」を選択することで、style.conf に変更を反映できます。
+								</div>
+						</section>
+				</section>
+		</div>
+</MainLayout>

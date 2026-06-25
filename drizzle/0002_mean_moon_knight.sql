@@ -1,0 +1,1 @@
+ALTER TABLE "posts" ADD COLUMN "rendered_body" text NOT NULL;

@@ -1,0 +1,17 @@
+---
+import { BlogPostList } from "@/components/BlogPostList";
+import MainLayout from "@/layouts/MainLayout.astro";
+
+---
+
+<MainLayout title="Blog">
+	<div class="mx-auto max-w-5xl py-8">
+		<section class="mb-10">
+			<h1 class="mt-3 text-4xl font-medium tracking-tight text-(--gray-12)">
+				記事一覧
+			</h1>
+		</section>
+
+		<BlogPostList client:visible />
+	</div>
+</MainLayout>

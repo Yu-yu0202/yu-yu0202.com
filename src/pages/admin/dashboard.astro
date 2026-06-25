@@ -1,0 +1,12 @@
+---
+import AdminLayout from "@/layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="ダッシュボード">
+    <iframe
+            src={import.meta.env.UMAMI_DASHBOARD_URL}
+            style="width: 100%; height: 800px; border: none; border-radius: 8px;"
+            loading="lazy"
+            title="Analytics Dashboard"
+    />
+</AdminLayout>

@@ -1,0 +1,15 @@
+---
+import { LoginForm } from "@/components/LoginForm";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+if (Astro.locals.user) {
+	Astro.redirect("/admin/dashboard");
+}
+---
+
+<BaseLayout title="ログイン">
+  <main class="login-container flex items-center justify-center h-screen w-screen">
+    <LoginForm client:visible />
+  </main>
+</BaseLayout>
+
