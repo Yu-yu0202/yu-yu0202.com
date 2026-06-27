@@ -10,7 +10,9 @@
 		"build": "bunx --bun astro build",
 		"preview": "bunx --bun astro preview",
 		"astro": "bunx --bun astro",
-		"format": "prettier --write ."
+		"format": "biome format --write",
+		"lint": "biome lint",
+		"serve": "bun run --bun dist/server/entry.mjs"
 	},
 	"dependencies": {
 		"@astrojs/node": "10.1.4",
