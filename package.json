@@ -8,7 +8,7 @@
 	"scripts": {
 		"dev": "bunx --bun astro dev",
 		"build": "bunx --bun astro build && bun run copy",
-		"copy": "mkdir -p html && cp -r dist/client/ html/",
+		"copy": "mkdir -p html && cp -r dist/client/* html/",
 		"preview": "bunx --bun astro preview",
 		"astro": "bunx --bun astro",
 		"format": "biome format --write",
