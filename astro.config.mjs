@@ -7,7 +7,7 @@ import { defineConfig, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	output: "server",
+	output: "static",
 
 	adapter: node({
 		mode: "standalone",
