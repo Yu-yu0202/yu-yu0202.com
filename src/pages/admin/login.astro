@@ -2,6 +2,8 @@
 import { LoginForm } from "@/components/LoginForm";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
+export const prerender = false;
+
 if (Astro.locals.user) {
 	Astro.redirect("/admin/dashboard");
 }
