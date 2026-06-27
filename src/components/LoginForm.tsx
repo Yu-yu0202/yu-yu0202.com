@@ -54,7 +54,7 @@ export const LoginForm = () => {
 				管理画面ログイン
 			</Heading>
 
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} autoComplete="on">
 				<Flex direction="column" gap="3">
 					<label>
 						<Text as="div" size="2" mb="1" weight="bold">
@@ -65,6 +65,7 @@ export const LoginForm = () => {
 							placeholder="ユーザー名を入力"
 							required
 							disabled={isLoading}
+							autoComplete="username"
 						/>
 					</label>
 					<label>
@@ -77,6 +78,7 @@ export const LoginForm = () => {
 							placeholder="パスワードを入力"
 							required
 							disabled={isLoading}
+							autoComplete="current-password"
 						/>
 					</label>
 				</Flex>
