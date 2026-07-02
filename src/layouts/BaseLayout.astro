@@ -32,7 +32,7 @@ const umamiWebsiteId = import.meta.env.UMAMI_WEBSITE_ID;
         />
     )}
 
-    <script is:inline>
+    <script is:inline data-cfasync="false">
       const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.classList.toggle('dark', isDark);
       document.documentElement.classList.toggle('light', !isDark);
