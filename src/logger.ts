@@ -4,20 +4,39 @@ import {
 	getAnsiColorFormatter,
 	getConsoleSink,
 	getJsonLinesFormatter,
+	type LogRecord,
 	getLogger as logtapeLogger,
+	type Sink,
 } from "@logtape/logtape";
 
 const logDirectory = import.meta.env.DEV ? "./logs/" : "/var/log/astro-blog/";
 
+const getFileSink = () =>
+	getTimeRotatingFileSink({
+		interval: "daily",
+		directory: logDirectory,
+		maxAgeMs: 30 * 24 * 60 * 60 * 1000,
+		formatter: getJsonLinesFormatter(),
+	});
+
+const getLazyFileSink = (): Sink => {
+	let sink: (Sink & Partial<Disposable>) | undefined;
+
+	return Object.assign(
+		(record: LogRecord) => {
+			sink ??= getFileSink();
+			sink(record);
+		},
+		{
+			[Symbol.dispose]: () => sink?.[Symbol.dispose]?.(),
+		},
+	);
+};
+
 await configure({
 	sinks: {
 		console: getConsoleSink({ formatter: getAnsiColorFormatter() }),
-		file: getTimeRotatingFileSink({
-			interval: "daily",
-			directory: logDirectory,
-			maxAgeMs: 30 * 24 * 60 * 60 * 1000,
-			formatter: getJsonLinesFormatter(),
-		}),
+		file: import.meta.env.DEV ? getFileSink() : getLazyFileSink(),
 	},
 	loggers: [
 		{
