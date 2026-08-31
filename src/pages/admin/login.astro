@@ -10,7 +10,7 @@ if (Astro.locals.user) {
 ---
 
 <BaseLayout title="ログイン">
-  <main class="login-container flex items-center justify-center h-screen w-screen">
+  <main class="login-container flex min-h-dvh w-full items-center justify-center px-(--space-4)">
     <LoginForm client:visible />
   </main>
 </BaseLayout>

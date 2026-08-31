@@ -10,27 +10,27 @@ const { title } = Astro.props;
 ---
 
 <BaseLayout title={`${title} | Admin`}>
-  <div class="grid grid-cols-[250px_1fr] grid-rows-[auto_1fr] h-screen gap-(--space-1) relative" style={{ position: "relative" }}>
-    <header class="col-span-2 border-b border-(--gray-a6) flex items-center justify-between px-(--space-6) py-(--space-4) bg-(--color-surface) sticky top-0 z-10">
+  <div class="relative grid h-dvh min-w-0 grid-cols-1 grid-rows-[auto_auto_minmax(0,1fr)] gap-(--space-1) md:grid-cols-[250px_minmax(0,1fr)] md:grid-rows-[auto_minmax(0,1fr)]">
+    <header class="sticky top-0 z-10 flex items-center justify-between border-b border-(--gray-a6) bg-(--color-surface) px-(--space-4) py-(--space-3) md:col-span-2 md:px-(--space-6) md:py-(--space-4)">
       <h1 class="text-2xl font-semibold m-0">管理画面</h1>
       <LogoutButton client:visible/>
     </header>
 
-    <aside class="border-r border-(--gray-a6) bg-(--color-surface) overflow-y-auto">
-      <nav class="flex flex-col py-(--space-4) px-0 gap-0">
-        <a href="/admin/dashboard" class="flex items-center gap-(--space-2) px-(--space-4) py-(--space-2) text-(--font-size-2) no-underline transition-colors duration-200 cursor-pointer hover:bg-(--gray-a3)">
+    <aside class="min-w-0 overflow-x-auto border-b border-(--gray-a6) bg-(--color-surface) md:overflow-y-auto md:border-r md:border-b-0">
+      <nav class="flex flex-row gap-0 px-0 py-(--space-2) md:flex-col md:py-(--space-4)">
+        <a href="/admin/dashboard" class="flex shrink-0 cursor-pointer items-center gap-(--space-2) whitespace-nowrap px-(--space-4) py-(--space-2) text-(--font-size-2) no-underline transition-colors duration-200 hover:bg-(--gray-a3)">
           📊 ダッシュボード
         </a>
-        <a href="/admin/posts" class="flex items-center gap-(--space-2) px-(--space-4) py-(--space-2) text-(--gray-12) no-underline transition-colors duration-200 cursor-pointer hover:bg-(--gray-a3)">
+        <a href="/admin/posts" class="flex shrink-0 cursor-pointer items-center gap-(--space-2) whitespace-nowrap px-(--space-4) py-(--space-2) text-(--gray-12) no-underline transition-colors duration-200 hover:bg-(--gray-a3)">
           📝 ブログ記事
         </a>
-        <a href="/admin/tags" class="flex items-center gap-(--space-2) px-(--space-4) py-(--space-2) text-(--font-size-2) no-underline transition-colors duration-200 cursor-pointer hover:bg-(--gray-a3)">
+        <a href="/admin/tags" class="flex shrink-0 cursor-pointer items-center gap-(--space-2) whitespace-nowrap px-(--space-4) py-(--space-2) text-(--font-size-2) no-underline transition-colors duration-200 hover:bg-(--gray-a3)">
           🏷️ タグ管理
         </a>
       </nav>
     </aside>
     
-    <main class="overflow-y-auto p-(--space-6)">
+    <main class="min-w-0 overflow-y-auto p-(--space-3) md:p-(--space-6)">
       <slot />
     </main>
   </div>

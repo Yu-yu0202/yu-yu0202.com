@@ -19,8 +19,7 @@ if (!post) {
 ---
 
 <BaseLayout title={`記事を編集: ${post.title}`}>
-  <main class="flex flex-col h-screen">
+  <main class="flex h-dvh flex-col">
     <PostEditForm post={post} client:visible />
   </main>
 </BaseLayout>
-

@@ -10,7 +10,7 @@ const posts = await getAllPosts(false) || [];
 ---
 
 <AdminLayout title="記事一覧">
-  <Flex justify="between" align="center" mb="5">
+  <Flex justify="between" align="center" wrap="wrap" gap="3" mb="5">
     <Heading as="h1" size="6" trim="start">記事管理</Heading>
     <a href="/admin/posts/new">
       <Button>新規作成</Button>

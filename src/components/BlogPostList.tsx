@@ -22,17 +22,21 @@ export const BlogPostSkeleton = () => {
 		<Box className="space-y-3">
 			{Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
 				<Card key={`post-skeleton-${i}`} className="post-card">
-					<Flex gap="3" align={"center"}>
-						<Skeleton
-							minWidth={"160"}
-							minHeight={"96"}
-							width={"160px"}
-							height={"96px"}
+					<Flex
+						gap="3"
+						align="center"
+						direction={{ initial: "column", xs: "row" }}
+					>
+						<Box
+							width={{ initial: "100%", xs: "160px" }}
+							className="aspect-video shrink-0 overflow-hidden rounded-lg bg-(--gray-a3)"
 						>
-							<Box className="self-center w-40 shrink-0 grow-0 aspect-video overflow-hidden rounded-lg bg-(--gray-a3)" />
-						</Skeleton>
+							<Skeleton width="100%" height="100%">
+								<div className="size-full" />
+							</Skeleton>
+						</Box>
 
-						<Box className="flex-1">
+						<Box className="min-w-0 flex-1 self-stretch">
 							<Skeleton>
 								<div className="h-6 w-3/4 rounded" />
 							</Skeleton>
@@ -142,8 +146,15 @@ export const BlogPostList = () => {
 				{state.posts.map((post, idx) => (
 					<Card key={post.id} className={"post-card"} asChild>
 						<a href={`/blog/${post.slug}`}>
-							<Flex gap="3" align={"start"}>
-								<Box className="self-center w-40 shrink-0 grow-0 aspect-video overflow-hidden rounded-lg bg-(--gray-a3)">
+							<Flex
+								gap="3"
+								align="start"
+								direction={{ initial: "column", xs: "row" }}
+							>
+								<Box
+									width={{ initial: "100%", xs: "160px" }}
+									className="aspect-video shrink-0 overflow-hidden rounded-lg bg-(--gray-a3)"
+								>
 									{post.ogImage && (
 										<img
 											src={post.ogImage}
@@ -152,7 +163,7 @@ export const BlogPostList = () => {
 										/>
 									)}
 								</Box>
-								<Box>
+								<Box className="min-w-0 flex-1">
 									<Heading as="h2">{post.title}</Heading>
 
 									<Text

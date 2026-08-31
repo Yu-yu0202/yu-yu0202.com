@@ -21,7 +21,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
         </section>
 
         <Flex direction="column" align="center" justify="center" gap="1">
-            <Grid columns="2" gap="3">
+            <Grid columns={{ initial: "1", sm: "2" }} gap="3">
                 <Image
                         src={notifyAviUtl2Image}
                         alt="AviUtl2 のリリースを通知する様子"
