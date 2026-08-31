@@ -89,7 +89,7 @@ export const PostEditForm = ({ post }: Props) => {
 			<Flex
 				align="center"
 				justify="between"
-				p="4"
+				p={{ initial: "3", sm: "4" }}
 				style={{
 					borderBottom: "1px solid var(--gray-a6)",
 					backgroundColor: "var(--color-surface)",
@@ -115,12 +115,13 @@ export const PostEditForm = ({ post }: Props) => {
 				</Flex>
 			</Flex>
 
-			<Box p="4" style={{ flex: 1, overflowY: "auto" }}>
+			<Box p={{ initial: "2", sm: "4" }} style={{ flex: 1, overflowY: "auto" }}>
 				<Flex
-					gap="6"
-					style={{ height: "100%", maxWidth: "1200px", margin: "0 auto" }}
+					gap={{ initial: "4", md: "6" }}
+					direction={{ initial: "column", md: "row" }}
+					style={{ minHeight: "100%", maxWidth: "1200px", margin: "0 auto" }}
 				>
-					<Flex direction="column" gap="4" style={{ flex: 3 }}>
+					<Flex direction="column" gap="4" style={{ flex: 3, minWidth: 0 }}>
 						<TextField.Root
 							name="title"
 							placeholder="記事のタイトル"
@@ -149,7 +150,10 @@ export const PostEditForm = ({ post }: Props) => {
 					<Flex
 						direction="column"
 						gap="5"
-						style={{ flex: 1, minWidth: "300px" }}
+						width={{ initial: "100%", md: "auto" }}
+						minWidth={{ md: "300px" }}
+						maxWidth={{ md: "360px" }}
+						style={{ flex: 1 }}
 					>
 						<Box>
 							<Heading size="3" mb="3">

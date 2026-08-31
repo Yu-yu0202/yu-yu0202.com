@@ -18,7 +18,7 @@ export const ServiceCard = ({ href, title, description, children }: Props) => {
 						{children}
 					</Inset>
 
-					<Box className="flex-1 pr-6">
+					<Box className="min-w-0 flex-1 pr-2 sm:pr-6">
 						<Heading as="h2" size="5">
 							{title}
 						</Heading>

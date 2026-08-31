@@ -49,7 +49,7 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<Card size="4" style={{ width: "400px" }}>
+		<Card size="4" className="w-full max-w-[400px]">
 			<Heading as="h1" size="6" trim="start" mb="5">
 				管理画面ログイン
 			</Heading>

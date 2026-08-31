@@ -9,17 +9,17 @@ const { title } = Astro.props;
 ---
 
 <BaseLayout title={title}>
-  <div class="flex flex-col h-screen overflow-y-auto">
+  <div class="flex min-h-dvh flex-col">
 
-    <header class="border-b border-(--gray-a6) flex items-center justify-between px-(--space-6) py-(--space-4) bg-(--color-surface)/80 backdrop-blur-md sticky top-0 z-10">
+    <header class="sticky top-0 z-10 flex flex-col items-stretch gap-2 border-b border-(--gray-a6) bg-(--color-surface)/80 px-(--space-4) py-(--space-3) backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-(--space-6) sm:py-(--space-4)">
       <a href="/" class="text-3xl leading-10 font-medium m-0">ゆーゆー</a>
       
-      <nav class="flex items-center gap-4 font-light text-base tracking-wide text-(--gray-12)">
+      <nav class="flex w-full items-center justify-between gap-2 text-sm font-light tracking-wide text-(--gray-12) sm:w-auto sm:justify-start sm:gap-4 sm:text-base">
         <a href="/blog" class="nav-link nav-link-blog inline-block relative py-1 text-(--gray-12) no-underline transition-colors">
           Blog
         </a>
         
-        <span aria-hidden="true" class="inline-flex items-center px-1">
+        <span aria-hidden="true" class="hidden items-center px-1 sm:inline-flex">
           <svg width="2" height="20" viewBox="0 0 2 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-(--gray-a8)">
             <rect x="0" y="0" width="2" height="20" rx="1" fill="currentColor" />
           </svg>
@@ -29,7 +29,7 @@ const { title } = Astro.props;
           Services
         </a>
         
-        <span aria-hidden="true" class="inline-flex items-center px-1">
+        <span aria-hidden="true" class="hidden items-center px-1 sm:inline-flex">
           <svg width="2" height="20" viewBox="0 0 2 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-(--gray-a8)">
             <rect x="0" y="0" width="2" height="20" rx="1" fill="currentColor" />
           </svg>
@@ -41,12 +41,12 @@ const { title } = Astro.props;
       </nav>
     </header>
 
-    <main class="w-full max-w-7xl mx-auto px-(--space-6) py-3 flex-1 text-[18px] font-light">
+    <main class="mx-auto w-full max-w-7xl flex-1 px-(--space-4) py-3 text-[18px] font-light sm:px-(--space-6)">
       <slot/>
     </main>
     
     <footer class="mt-auto border-t border-(--gray-a4) py-8">
-      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-(--gray-11)">
+      <div class="mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-4 px-(--space-4) text-sm text-(--gray-11) sm:flex-row sm:px-(--space-6)">
         <div>
           &copy; 2026 ゆーゆーのお部屋 All rights reserved.
         </div>

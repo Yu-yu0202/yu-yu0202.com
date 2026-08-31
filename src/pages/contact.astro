@@ -45,8 +45,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
                 なお、keys.openpgp.org にも <a href="https://keys.openpgp.org/search?q=794B+DFAF+6950+B411+301C+52DE+EFBE+7214+D295+1236" class="hover:underline text-(--gray-12) font-medium">公開</a> しています。
             </p>
             
-            <Flex align="center" justify="center" gap="1">
-                <Code variant="ghost" className="mt-4" id="fingerprint">
+            <Flex align="center" justify="center" gap="1" wrap="wrap">
+                <Code variant="ghost" className="mt-4 break-words text-center" id="fingerprint">
                     794B DFAF 6950 B411 301C 52DE EFBE 7214 D295 1236
                 </Code>
                 <IconButton size="1" title="コピー" aria-label="フィンガープリントをコピー" color="gray" variant="ghost" id="button-copy-fingerprint">
