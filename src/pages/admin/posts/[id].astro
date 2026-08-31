@@ -1,6 +1,7 @@
 ---
 import { getPostById } from "@database/utils/posts.ts";
 import { PostEditForm } from "@/components/PostEditForm";
+import { Toaster } from "@/components/Toaster";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export const prerender = false;
@@ -19,6 +20,7 @@ if (!post) {
 ---
 
 <BaseLayout title={`記事を編集: ${post.title}`}>
+  <Toaster client:idle />
   <main class="flex h-dvh flex-col">
     <PostEditForm post={post} client:visible />
   </main>

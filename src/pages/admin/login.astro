@@ -1,5 +1,6 @@
 ---
 import { LoginForm } from "@/components/LoginForm";
+import { Toaster } from "@/components/Toaster";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export const prerender = false;
@@ -10,6 +11,7 @@ if (Astro.locals.user) {
 ---
 
 <BaseLayout title="ログイン">
+  <Toaster client:idle />
   <main class="login-container flex min-h-dvh w-full items-center justify-center px-(--space-4)">
     <LoginForm client:visible />
   </main>

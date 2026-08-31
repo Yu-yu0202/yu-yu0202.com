@@ -62,16 +62,6 @@ export default defineConfig({
 	},
 
 	vite: {
-		build: {
-			chunkSizeWarningLimit: 1024,
-			rolldownOptions: {
-				output: {
-					manualChunks: {
-						"vendor-editor": ["@uiw/react-md-editor", "rehype-sanitize"],
-					},
-				},
-			},
-		},
 		plugins: [tailwindcss()],
 	},
 });

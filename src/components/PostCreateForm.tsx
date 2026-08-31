@@ -10,7 +10,7 @@ import {
 	TextField,
 } from "@radix-ui/themes";
 import "@uiw/react-markdown-preview/markdown.css";
-import MDEditor from "@uiw/react-md-editor";
+import MDEditor from "@uiw/react-md-editor/common";
 import "@uiw/react-md-editor/markdown-editor.css";
 import type React from "react";
 import { useEffect, useState } from "react";

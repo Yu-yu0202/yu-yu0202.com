@@ -2,7 +2,6 @@
 import "@/styles/global.css";
 import { Font } from "astro:assets";
 import { AppTheme } from "@/components/AppTheme";
-import { Toaster } from "@/components/Toaster";
 
 interface Props {
 	title: string;
@@ -47,11 +46,13 @@ const umamiWebsiteId = import.meta.env.UMAMI_WEBSITE_ID;
       }
     </style>
   
-    <Font cssVariable="--font-gen-interface-jp" preload={true} />
+    <Font
+      cssVariable="--font-gen-interface-jp"
+      preload={[{ weight: 500, style: "normal" }]}
+    />
   </head>
 
   <body class="m-0 p-0 radix-themes font-sans font-medium antialiased">
-    <Toaster client:idle />
     <div class="min-h-screen flex flex-col w-full m-0 p-0" id="app-root">
       <AppTheme
         hasBackground={true}
